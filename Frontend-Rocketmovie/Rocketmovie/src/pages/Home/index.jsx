@@ -1,5 +1,7 @@
-import { Container, Content, ItemList } from './style'
+import { Container, Content, NewMovie, ItemList } from './style'
+
 import { AiFillStar, AiOutlineStar, AiOutlinePlus } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 import { Header } from '../../components/Header'
 import { Button } from '../../components/Button'
@@ -13,7 +15,10 @@ export function Home() {
         <Content>
           <div>
             <strong>Meus filmes</strong>
-            <Button icon={AiOutlinePlus} title="Adicionar filme"/>
+            <NewMovie to="/createmovie">
+              <AiOutlinePlus/>
+              Adicionar filme
+            </NewMovie>
           </div>
           <div className='list'>
             <ItemList>

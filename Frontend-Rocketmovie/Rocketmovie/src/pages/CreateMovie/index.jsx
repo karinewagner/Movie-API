@@ -1,11 +1,12 @@
 import { Container, Content } from './styles'
-import { AiOutlineArrowLeft, AiOutlinePlus } from 'react-icons/ai'
-import { FaTimes } from 'react-icons/fa'
+
+import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 import { Header } from '../../components/Header'
-import { ButtonText } from '../../components/ButtonText'
 import { Input } from '../../components/Input'
-import { Tag } from '../../components/Tag'
+import { Textarea } from '../../components/Textarea'
+import { NewTag } from '../../components/NewTag'
 import { Button } from '../../components/Button'
 
 export function CreateMovie() {
@@ -13,21 +14,26 @@ export function CreateMovie() {
     <Container>
       <Header/>
       <Content>
-        <ButtonText icon={AiOutlineArrowLeft} title="Voltar"/>
-        <strong>Novo filme</strong>
-        <div className='newMovieTitle'>
-          <Input/>
-          <Input/>
-        </div>
-        <Input/>
-        <span>Marcadores</span>
-        <div className='newMovieTags'>
-          <Tag title="React" icon={FaTimes}/>
-          <Tag title="Novo Marcador" icon={AiOutlinePlus}/>
-        </div>
-        <div className='finishBtn'>
-          <Button title="Excluir filme"/>
-          <Button title="Salvar alterações"/>
+        <Link to="/">
+          <AiOutlineArrowLeft/>
+          <p>Voltar</p> 
+        </Link>
+        <div className='content'>
+          <h2>Novo filme</h2>
+          <div className='newMovieTitle'>
+            <Input placeholder="Título"/> 
+            <Input placeholder="Sua nota (de 0 a 5)"/>
+          </div>
+          <Textarea placeholder="Observação"/>
+          <strong>Marcadores</strong>
+          <div className='newMovieTags'>
+            <NewTag value="Ficção Ciêntifica"/>
+            <NewTag value="" isNew placeholder="Novo marcador"/>
+          </div>
+          <div className='finishBtn'>
+            <Button title="Excluir filme"/>
+            <Button title="Salvar alterações"/>
+          </div>
         </div>
       </Content>
     </Container>

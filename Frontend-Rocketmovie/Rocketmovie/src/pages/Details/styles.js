@@ -20,16 +20,15 @@ export const Content = styled.div`
   max-width: 114rem;
   margin: 0 auto;
 
+  > a {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: .8rem;
 
-  svg {
-    display: flex;
-    align-items: center;
-
-    color: ${({ theme }) => theme.COLORS.PINK};
-
-    width: 2rem;
-    height: 2rem;
-  }
+      font-size: 2rem;
+      color: ${({ theme }) => theme.COLORS.PINK};
+    }
     
   .movieName {
     display: flex;
@@ -42,6 +41,10 @@ export const Content = styled.div`
       font-weight: 500;
       margin-right: 1rem;
     }
+
+    > svg {
+      color: ${({ theme }) => theme.COLORS.PINK};
+    }
   }
   
   .author {
@@ -53,6 +56,10 @@ export const Content = styled.div`
       width: 2rem;
       height: 2rem;
       border-radius: 50%;
+    }
+
+    svg {
+      color: ${({ theme }) => theme.COLORS.PINK};
     }
 
     h2 {

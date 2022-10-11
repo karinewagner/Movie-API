@@ -9,7 +9,6 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.BG_INPUT2};
   color: ${({ theme }) => theme.COLORS.GRAY_100};
 
-  margin: 3rem 6.4rem;
   border-radius: 1rem;
 
   > input {
@@ -26,9 +25,9 @@ export const Container = styled.div`
     &:placeholder{
       color: ${({ theme }) => theme.COLORS.GRAY_100};
     }
+  }
 
-    svg {
+  > svg {
       margin-left: 1.6rem;
     }
-  }
 `

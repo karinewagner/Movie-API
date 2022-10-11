@@ -1,9 +1,10 @@
 import { Container, Content } from './styles'
+
 import { AiOutlineArrowLeft, AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { MdOutlineWatchLater } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
 import { Header } from '../../components/Header'
-import { ButtonText } from '../../components/ButtonText'
 import { Tag } from '../../components/Tag'
 
 export function Details() {
@@ -12,7 +13,10 @@ export function Details() {
       <Header/>
       <main>
         <Content>
-          <ButtonText icon={AiOutlineArrowLeft} title="Voltar"/>
+          <Link to="/">
+            <AiOutlineArrowLeft/>
+            <p>Voltar</p> 
+          </Link>
           <div className='movieName'>
             <strong>Interestellar</strong>
             <AiFillStar/>

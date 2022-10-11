@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
     width: 100%;
@@ -27,18 +28,14 @@ export const Content = styled.div`
     > strong {
       font-weight: 400;
       font-size: 3.2rem;
-      
+        
       color: ${({ theme }) => theme.COLORS.WHITE};
-    }
-
-    > button {
-      width: 20.7rem;
     }
   }
 
   .list {
-    height: 60vh;
     grid-area: content;
+    height: 60vh;
     overflow-y: auto;
 
     display: flex;
@@ -51,7 +48,32 @@ export const Content = styled.div`
 
   .list::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.COLORS.PINK};
-    border-radius: 1rem;       /* roundness of the scroll thumb */
+    border-radius: 1rem;
+  }
+`
+export const NewMovie = styled(Link)`
+  width: 20.7rem;
+  height: 4.8rem;
+
+  background-color: ${({ theme }) => theme.COLORS.PINK};
+  color: ${({ theme }) => theme.COLORS.GRAY_200};
+
+  border: 0;
+  padding: 0 1.6rem;
+  margin-top: 1.6rem;
+  border-radius: 1rem;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > svg {
+    margin-right: 1rem;
+  }
+
+  &:disabled {
+    opacity: 0.5;
   }
 `
 

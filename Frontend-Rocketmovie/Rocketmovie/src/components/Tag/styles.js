@@ -9,7 +9,7 @@ export const Container = styled.span`
   background-color: ${({ theme }) => theme.COLORS.BG_PINK};
   color: ${({ theme }) => theme.COLORS.WHITE};
 
-  svg {
+  > svg {
     margin-left: 1.6rem;
   }
 `
