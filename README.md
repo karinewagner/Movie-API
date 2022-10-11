@@ -1,15 +1,27 @@
 # Movie-API
 
-> Criação de uma aplicação em Node.js onde o usuário cadastra um filme, preenche com algumas informações (nome, descrição, nota) e cria tags relacionadas a ele.
+> Criação de uma aplicação com React e Node, onde o usuário pode cadastra filmes, preenchendo algumas informações, como nome, descrição, nota e cria tags relacionadas a ele.
+
+## Tecnologias (Frontend)
+
+- React
+- Vite
+- HTML
+- Css
 </br>
 
-## Tecnologias
+![preview](./Frontend-Rocketmovie/Rocketmovie/.github/preview-frontend.png) 
+</br>
+</br>
+
+## Tecnologias (Backend)
+
 - Express
 - NodeJS
 - SQlite (SQL)
 - Knex.js
 </br>
 
-![preview](./.github/preview.png) 
+![preview](./Backend-Movie-API/.github/preview-diagrama.png) 
 </br>
 </br>
