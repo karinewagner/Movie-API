@@ -53,7 +53,7 @@ export const Form = styled.form`
       align-items: center;
       gap: .8rem;
 
-      font-size: 2rem;
+      font-size: 1.7rem;
       color: ${({ theme }) => theme.COLORS.PINK};
 
       margin: 5rem 10rem;
