@@ -1,13 +1,13 @@
 import { Container, Content, NewMovie, ItemList } from './style'
 
 import { AiFillStar, AiOutlineStar, AiOutlinePlus } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
 
 import { Header } from '../../components/Header'
-import { Button } from '../../components/Button'
 import { Tag } from '../../components/Tag'
 
 export function Home() {
+
+
   return (
     <Container>
       <Header/>
@@ -15,7 +15,7 @@ export function Home() {
         <Content>
           <div>
             <strong>Meus filmes</strong>
-            <NewMovie to="/createmovie">
+            <NewMovie to="/new">
               <AiOutlinePlus/>
               Adicionar filme
             </NewMovie>

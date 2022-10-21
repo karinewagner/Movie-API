@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 
 import { api } from '../services/api'
 
@@ -14,8 +14,10 @@ function AuthProvider({ children }) {
       const { user, token } = response.data
 
       localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
+      localStorage.setItem("@rocketmovies:token", token)
 
-      api.defaults.headers.authorization = `Bearer ${token}` 
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
       setData({ user, token })
 
     } catch(error) {
@@ -25,11 +27,62 @@ function AuthProvider({ children }) {
         alert("Não foi possível entrar.")
       }
     }
-
   }
 
+  function signOut() {
+    localStorage.removeItem("@rocketmovies:user")
+    localStorage.removeItem("@rocketmovies:token")
+
+    setData({})
+  }
+
+  async function updateProfile({ user, avatarFile }){
+    try {
+
+      if(avatarFile) {
+        const fileUploadForm = new FormData()
+        fileUploadForm.append("avatar", avatarFile)
+
+        const response = await api.patch("/users/avatar", fileUploadForm)
+        user.avatar = response.data.avatar
+      }
+
+      await api.put("/users", user)
+      localStorage.setItem("@rocketmovies:user", JSON.stringify(user))
+
+      setData({ user, token: data.token })
+      alert("Perfil atualizado com sucesso!")
+
+    } catch(error) {
+      if(error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert("Não foi possível atualizar o perfil.")
+      }
+    }
+  }
+
+  useEffect(() => {
+    const user = localStorage.getItem("@rocketmovies:user")
+    const token = localStorage.getItem("@rocketmovies:token")
+
+    if(user && token) {
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
+      setData({
+        user: JSON.parse(user),
+        token 
+      })
+    }
+  }, [])
+
   return (
-    <AuthContext.Provider value={{ singIn, user: data.user }}>
+    <AuthContext.Provider value={{ 
+      singIn,
+      signOut,
+      updateProfile,
+      user: data.user 
+    }}>
       { children }
     </AuthContext.Provider>
   )

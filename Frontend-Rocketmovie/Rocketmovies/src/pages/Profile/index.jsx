@@ -1,12 +1,50 @@
 import { Container, Form, Avatar } from './styles'
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
-import { AiOutlineArrowLeft, AiOutlineUserAdd, AiOutlineMail, AiOutlineUnlock, AiOutlineLock, AiOutlineCamera } from 'react-icons/ai'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AiOutlineArrowLeft, AiOutlineUserAdd, AiOutlineMail, AiOutlineUnlock, AiOutlineLock, AiOutlineCamera } from 'react-icons/ai'
+
+import { useAuth } from '../../hooks/auth'
+import { api } from '../../services/api'
 
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 
 export function Profile() {
+  const { user, updateProfile} = useAuth()
+
+  const [name, setName] = useState(user.name)
+  const [email, setEmail] = useState(user.email)
+  const [passwordOld, setPasswordOld] = useState()
+  const [passwordNew, setPasswordNew] = useState()
+
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+
+  const [avatar, setAvatar] = useState(avatarUrl)
+  const [avatarFile, setAvatarFile] = useState(null)
+
+  async function handleUpdate() {
+    const updated = {
+      name,
+      email,
+      old_password: passwordOld,
+      password: passwordNew
+    }
+
+    const userUpdated = Object.assign(user, updated)
+
+    await updateProfile({ user: userUpdated, avatarFile })
+  }
+
+  function handleChangeAvatar(event) {
+    const file = event.target.files[0]
+    setAvatarFile(file)
+
+    const imagePreview = URL.createObjectURL(file)
+    setAvatar(imagePreview)
+  }
+
   return (
     <Container>
       <header>
@@ -18,17 +56,43 @@ export function Profile() {
 
       <Form>
         <Avatar>
-          <img src="https://github.com/karinewagner.png" alt="Foto do usuário" />
+          <img src={avatar} alt="Foto do usuário" />
           <label htmlFor="avatar">
             <AiOutlineCamera/>
-            <input id="avatar" type="file"/>
+            <input 
+              id="avatar" 
+              type="file"
+              onChange={handleChangeAvatar}
+            />
           </label>
         </Avatar>
-        <Input icon={AiOutlineUserAdd} type="text" placeholder="Nome do usuário"/>
-        <Input icon={AiOutlineMail} type="text" placeholder="E-mail do usuário"/>
-        <Input icon={AiOutlineUnlock} type="password" placeholder="Senha atual"/>
-        <Input icon={AiOutlineLock} type="password" placeholder="Nova senha"/>
-        <Button title="Salvar" />
+        <Input 
+          placeholder="Nome do usuário"
+          icon={AiOutlineUserAdd} 
+          type="text" 
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
+        <Input 
+          placeholder="E-mail do usuário"
+          icon={AiOutlineMail} 
+          type="text" 
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <Input 
+          placeholder="Senha atual"
+          icon={AiOutlineUnlock} 
+          type="password" 
+          onChange={e => setPasswordOld(e.target.value)}
+        />
+        <Input 
+          placeholder="Nova senha"
+          icon={AiOutlineLock} 
+          type="password" 
+          onChange={e => setPasswordNew(e.target.value)}
+        />
+        <Button title="Salvar" onClick={handleUpdate}/>
       </Form>
     </Container>
   )

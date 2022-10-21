@@ -52,7 +52,7 @@ class UsersController {
       const checkOldPassword = await compare(old_password, user.password)
 
       if(!checkOldPassword) {
-        throw new AppError("A senha antiga não confere.")
+        throw new AppError("A senha atual(antiga) não confere.")
       }
 
       user.password = await hash(password, 8)
