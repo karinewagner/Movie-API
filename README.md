@@ -10,7 +10,7 @@
 - Css
 </br>
 
-![preview](./Frontend-Rocketmovie/Rocketmovie/.github/preview-frontend.png) 
+![preview](./Frontend-Rocketmovie/Rocketmovies/.github/preview-frontend.png) 
 </br>
 </br>
 
