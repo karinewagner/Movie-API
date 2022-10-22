@@ -5,8 +5,11 @@ import { AiFillStar, AiOutlineStar, AiOutlinePlus } from 'react-icons/ai'
 import { Header } from '../../components/Header'
 import { Tag } from '../../components/Tag'
 
-export function Home() {
 
+import { useMovies } from '../../hooks/movies'
+
+export function Home() {
+  const { movies } = useMovies();
 
   return (
     <Container>
@@ -21,56 +24,29 @@ export function Home() {
             </NewMovie>
           </div>
           <div className='list'>
-            <ItemList>
-              <h2>Interestellar</h2>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiOutlineStar/>
-              <p>
-                Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em 
-                futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, 
-                a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma...          
-              </p>
-              <Tag title="Ficção Científica"/>
-              <Tag title="Drama"/>
-              <Tag title="Família"/>
-            </ItemList>
-            <ItemList>
-              <h2>Interestellar</h2>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiOutlineStar/>
-              <p>
-                Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em 
-                futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, 
-                a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma...          
-              </p>
-              <Tag title="Ficção Científica"/>
-              <Tag title="Drama"/>
-              <Tag title="Família"/>
-            </ItemList>
-            <ItemList>
-              <h2>Interestellar</h2>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiOutlineStar/>
-              <p>
-                Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em 
-                futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, 
-                a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma...          
-              </p>
-              <Tag title="Ficção Científica"/>
-              <Tag title="Drama"/>
-              <Tag title="Família"/>
-            </ItemList>
+            {
+              movies.map(movie => (             
+                <ItemList
+                  key={String(movie.id)}
+                >
+                  <h2>{movie.title}</h2>
+                    <AiFillStar/>
+                    <AiFillStar/>
+                    <AiFillStar/>
+                    <AiFillStar/>
+                    <AiOutlineStar/>
+                    <p>{movie.description}</p>
+                    {
+                      movie.tags.map(tag => (
+                        <Tag 
+                          key={String(tag.id)}
+                          title={tag.name}/>
+                      ))
+                    }
+                </ItemList>
+              ))
+            }
           </div>
-
         </Content>
       </main>
     </Container>

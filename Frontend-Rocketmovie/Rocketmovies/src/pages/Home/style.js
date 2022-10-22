@@ -17,6 +17,11 @@ export const Content = styled.div`
   width: 114rem;
   margin: 0 auto;
 
+  > .teste {
+    display: flex;
+    flex-direction: column;
+  }
+
   div {
     display: flex;
     flex-direction: row;
