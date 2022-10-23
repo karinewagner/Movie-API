@@ -15,7 +15,7 @@ export const Container = styled.div`
 
     padding: 0 12.4rem;
 
-    > a {
+    .btnBack {
       display: flex;
       justify-content: center;
       align-items: center;

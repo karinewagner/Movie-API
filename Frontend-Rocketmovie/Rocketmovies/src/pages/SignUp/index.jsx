@@ -1,13 +1,14 @@
 import { Container, Form, Background } from './styles'
 
 import { AiOutlineUserAdd, AiOutlineMail, AiFillLock, AiOutlineArrowLeft} from 'react-icons/ai'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 import { api } from '../../services/api'
 
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
+import { ButtonText } from '../../components/ButtonText'
 
 export function SignUp() {
   const [name, setName] = useState("")
@@ -34,6 +35,10 @@ export function SignUp() {
       }
 
     })
+  }
+
+  function handleBack() {
+    navigate(-1)
   }
 
   return (
@@ -67,10 +72,13 @@ export function SignUp() {
           onClick={handleSignUp}
         />
 
-        <Link to="/">
+        <div className='btnBack'>
           <AiOutlineArrowLeft/>
-          <p>Voltar para o login</p> 
-        </Link>
+          <ButtonText 
+            title="Voltar para o login" 
+            onClick={handleBack}>
+          </ButtonText>
+        </div>
 
       </Form>
       <Background/>

@@ -2,7 +2,7 @@ import { Container, Form, Avatar } from './styles'
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { AiOutlineArrowLeft, AiOutlineUserAdd, AiOutlineMail, AiOutlineUnlock, AiOutlineLock, AiOutlineCamera } from 'react-icons/ai'
 
 import { useAuth } from '../../hooks/auth'
@@ -10,6 +10,7 @@ import { api } from '../../services/api'
 
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
+import { ButtonText } from '../../components/ButtonText'
 
 export function Profile() {
   const { user, updateProfile} = useAuth()
@@ -23,6 +24,8 @@ export function Profile() {
 
   const [avatar, setAvatar] = useState(avatarUrl)
   const [avatarFile, setAvatarFile] = useState(null)
+
+  const navigate = useNavigate()
 
   async function handleUpdate() {
     const updated = {
@@ -45,13 +48,20 @@ export function Profile() {
     setAvatar(imagePreview)
   }
 
+  function handleBack() {
+    navigate(-1)
+  }
+
   return (
     <Container>
       <header>
-        <Link to="/">
-          <AiOutlineArrowLeft/>
-          <p>Voltar</p> 
-        </Link>
+        <div className='btnBack'>
+            <AiOutlineArrowLeft/>
+            <ButtonText 
+              title="Voltar" 
+              onClick={handleBack}>
+            </ButtonText>
+          </div>
       </header>
 
       <Form>

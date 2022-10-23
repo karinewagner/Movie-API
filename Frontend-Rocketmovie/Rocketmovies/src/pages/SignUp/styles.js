@@ -48,7 +48,7 @@ export const Form = styled.form`
     margin-top: .8rem;
   }
 
-  > a {
+  .btnBack {
       display: flex;
       align-items: center;
       gap: .8rem;

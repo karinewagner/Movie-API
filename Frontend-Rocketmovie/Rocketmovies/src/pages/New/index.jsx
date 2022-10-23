@@ -2,7 +2,7 @@ import { Container, Content } from './styles'
 
 import { useState } from 'react'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { api } from '../../services/api'
 
@@ -11,11 +11,13 @@ import { Input } from '../../components/Input'
 import { Textarea } from '../../components/Textarea'
 import { NewTag } from '../../components/NewTag'
 import { Button } from '../../components/Button'
+import { ButtonText } from '../../components/ButtonText'
+
 
 export function New() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
-
+  const [rating, setRating] = useState("");
   const [tags, setTags] = useState([])
   const [newTag, setNewTag] = useState("")
 
@@ -30,14 +32,29 @@ export function New() {
     setTags(prevState => prevState.filter(tags => tags !== deleted))
   }
 
+  function handleBack() {
+    navigate(-1)
+  }
+
+  async function handleRemove() {
+    const confirm = window.confirm("Deseja realmente remover o filme?")
+
+    if(confirm) {
+      //await api.delete(`/movies/${params.id}`)
+      handleBack()
+    }
+  }
+
   async function handleNewMovie() {
     if(!title) {
       return alert("Digite o título do filme.")
     }
 
-    //if(ranting) {
-    //  return alert("Digite uma nota para o filme.")
-    //}
+    const isRatingValid = rating >= 0 && rating <= 5 && rating !== "";
+
+    if(!isRatingValid) {
+      return alert("Digite uma nota para o filme.")
+    }
 
     if(newTag) {
       return alert("Você digitou uma tag no campo de adicionar, mas não clicou em adicionar! Clique para adicionar ou deixe o campo vázio.")
@@ -46,6 +63,7 @@ export function New() {
     await api.post("/movies", {
       title,
       description,
+      rating,
       tags
     })
 
@@ -57,11 +75,13 @@ export function New() {
     <Container>
       <Header/>
       <Content>
-        <Link to="/">
+        <div className='btnBack'>
           <AiOutlineArrowLeft/>
-          <p>Voltar</p> 
-        </Link>
-
+          <ButtonText 
+            title="Voltar" 
+            onClick={handleBack}>
+          </ButtonText>
+        </div>
         <div className='content'>
 
           <h2>Novo filme</h2>
@@ -73,6 +93,11 @@ export function New() {
             /> 
             <Input 
               placeholder="Sua nota (de 0 a 5)"
+              type="number"
+              min="0"
+              max="5"
+              value={rating}
+              onChange={e => setRating(e.target.value)}
             />
           </div>
 
@@ -105,6 +130,7 @@ export function New() {
           <div className='finishBtn'>
             <Button 
               title="Excluir filme"
+              onClick={handleRemove}
             />
             <Button 
               title="Salvar"

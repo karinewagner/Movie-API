@@ -29,17 +29,17 @@ export const Content = styled.div`
   width: 113.7rem;
   margin: 0 auto;
 
-  > a {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: .8rem;
+  .btnBack {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .8rem;
 
-      font-size: 2rem;
-      color: ${({ theme }) => theme.COLORS.PINK};
+    font-size: 2rem;
+    color: ${({ theme }) => theme.COLORS.PINK};
 
-      margin: 4rem 0 2.4rem;
-    }
+    margin: 4rem 0 2.4rem;
+  }
 
   > h2 {
     font-weight: 500;

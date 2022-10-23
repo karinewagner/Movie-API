@@ -1,5 +1,6 @@
 import { Container, Content, NewMovie, ItemList } from './style'
 
+import { useNavigate } from 'react-router-dom'
 import { AiFillStar, AiOutlineStar, AiOutlinePlus } from 'react-icons/ai'
 
 import { Header } from '../../components/Header'
@@ -10,6 +11,12 @@ import { useMovies } from '../../hooks/movies'
 
 export function Home() {
   const { movies } = useMovies();
+
+  const navigate = useNavigate()
+
+  function handleDetails(id) {
+    navigate(`/details/${id}`)
+  }
 
   return (
     <Container>
@@ -28,6 +35,7 @@ export function Home() {
               movies.map(movie => (             
                 <ItemList
                   key={String(movie.id)}
+                  onClick={() => handleDetails(movie.id)}
                 >
                   <h2>{movie.title}</h2>
                     <AiFillStar/>

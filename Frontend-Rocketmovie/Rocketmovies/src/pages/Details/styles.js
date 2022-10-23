@@ -20,7 +20,7 @@ export const Content = styled.div`
   max-width: 114rem;
   margin: 0 auto;
 
-  > a {
+  .btnBack {
       display: flex;
       justify-content: flex-start;
       align-items: center;
