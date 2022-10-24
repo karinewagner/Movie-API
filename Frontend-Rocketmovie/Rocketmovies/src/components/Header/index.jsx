@@ -1,15 +1,15 @@
 import { Container, Profile, Button } from './styles'
+
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
+
+import { useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useAuth } from '../../hooks/auth'
-import { api } from '../../services/api'
-
-import { Input } from '../Input'
-
-
-import { useContext, useState, useEffect } from 'react'
 import { MovieContext } from '../../hooks/movies'
+
+import { api } from '../../services/api'
+import { Input } from '../Input'
 
 export function Header() {
   const { fetchMovies } = useContext(MovieContext)
@@ -25,7 +25,7 @@ export function Header() {
     }, [search])
 
   function handleSignOut() {
-    navigation("/")
+    navigation('/')
     signOut()
   }
 
@@ -33,7 +33,7 @@ export function Header() {
     <Container>
       <h1>RocketMovies</h1>
       <Input 
-        placeholder="Pesquisar pelo título"
+        placeholder='Pesquisar pelo título'
         onChange={e => setSearch(e.target.value)}
       />
       <div>
@@ -41,7 +41,7 @@ export function Header() {
           <strong>{user.name}</strong>
           <Button onClick={handleSignOut}>sair</Button>
         </div>
-        <Profile to="/profile">
+        <Profile to='/profile'>
           <img 
             src={avatarUrl}
             alt={`Foto de ${user.name}`}

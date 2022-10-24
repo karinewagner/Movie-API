@@ -7,13 +7,13 @@ export function NewTag({ isNew, value, onClick, ...rest}) {
   return (
     <Container isNew={isNew} >
       <input
-        type="text"
+        type='text'
         value={value}
         readOnly={!isNew}
         {...rest}
       />
       <button
-        type="button"
+        type='button'
         onClick={onClick}
       >
         { isNew ? <AiOutlinePlus/> : <FaTimes/> }

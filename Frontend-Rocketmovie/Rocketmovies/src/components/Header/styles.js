@@ -40,11 +40,11 @@ export const Container = styled.header`
     margin-right: 2rem;
     line-height: 2rem;
 
-    strong {
-      font-size: 1.4rem;
-      color: ${({ theme }) => theme.COLORS.WHITE};
+      strong {
+        font-size: 1.4rem;
+        color: ${({ theme }) => theme.COLORS.WHITE};
+      }
     }
-  }
   }
 `
 
@@ -57,8 +57,6 @@ export const Profile = styled(Link)`
     height: 5.6rem;
     border-radius: 50%;
   }
-
-
 `
 
 export const Button = styled.button`

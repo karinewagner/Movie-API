@@ -7,21 +7,22 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 11.6rem auto;
   grid-template-areas:
-    "header"
-    "content";
+    'header'
+    'content';
 
   .content {
     grid-area: content;
     height: 60vh;
     overflow-y: auto;
   }
-    .content::-webkit-scrollbar {
+
+  .content::-webkit-scrollbar {
     width: 1rem;
   }
 
-    .content::-webkit-scrollbar-thumb {
+  .content::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.COLORS.PINK};
-    border-radius: 1rem;       /* roundness of the scroll thumb */
+    border-radius: 1rem;
   }
 `
 

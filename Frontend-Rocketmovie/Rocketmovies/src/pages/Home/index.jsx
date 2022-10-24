@@ -1,13 +1,13 @@
 import { Container, Content, NewMovie, ItemList } from './style'
 
 import { useNavigate } from 'react-router-dom'
-import { AiFillStar, AiOutlineStar, AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlinePlus } from 'react-icons/ai'
+
+import { useMovies } from '../../hooks/movies'
 
 import { Header } from '../../components/Header'
 import { Tag } from '../../components/Tag'
-
-
-import { useMovies } from '../../hooks/movies'
+import { Ratings } from '../../components/Ratings'
 
 export function Home() {
   const { movies } = useMovies();
@@ -23,9 +23,9 @@ export function Home() {
       <Header/>
       <main>
         <Content>
-          <div>
+          <div className='myMovies'>
             <strong>Meus filmes</strong>
-            <NewMovie to="/new">
+            <NewMovie to='/new'>
               <AiOutlinePlus/>
               Adicionar filme
             </NewMovie>
@@ -37,12 +37,10 @@ export function Home() {
                   key={String(movie.id)}
                   onClick={() => handleDetails(movie.id)}
                 >
-                  <h2>{movie.title}</h2>
-                    <AiFillStar/>
-                    <AiFillStar/>
-                    <AiFillStar/>
-                    <AiFillStar/>
-                    <AiOutlineStar/>
+                    <h2>{movie.title}</h2>
+                    <div>
+                      <Ratings rate={movie.ratings}/>
+                    </div>
                     <p>{movie.description}</p>
                     {
                       movie.tags.map(tag => (

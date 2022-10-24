@@ -1,25 +1,29 @@
 import { Container, Content } from './styles'
+
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
 import { useState, useEffect } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
-import { AiOutlineArrowLeft, AiFillStar, AiOutlineStar } from 'react-icons/ai'
+import { useParams, useNavigate } from 'react-router-dom'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { MdOutlineWatchLater } from 'react-icons/md'
 
 import { api } from '../../services/api'
+
 import { useAuth } from '../../hooks/auth'
 
 import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
 import { Tag } from '../../components/Tag'
+import { Ratings } from '../../components/Ratings'
 
 export function Details() {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState({})
 
   const params = useParams()
   const navigate = useNavigate()
 
   const { user } = useAuth()
+
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
   function handleBack() {
@@ -46,17 +50,13 @@ export function Details() {
             <div className='btnBack'>
               <AiOutlineArrowLeft/>
               <ButtonText 
-                title="Voltar" 
+                title='Voltar'
                 onClick={handleBack}>
               </ButtonText>
             </div>
             <div className='movieName'>
               <strong>{data.title}</strong>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiFillStar/>
-              <AiOutlineStar/>
+              <Ratings rate={data.ratings}/>
             </div>
             <div className='author'>
               <img           
@@ -65,7 +65,7 @@ export function Details() {
               />
               <h2>{`Por ${user.name}`}</h2>
               <MdOutlineWatchLater/>
-              <h2>10/10/2022 às 08:00</h2>
+              <h2>{data.created_at}</h2>
             </div>
             {
               data.tags &&

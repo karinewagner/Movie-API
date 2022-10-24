@@ -1,8 +1,8 @@
 import { Container, Form, Background } from './styles'
 
+import { useState } from 'react'
 import { AiOutlineMail, AiFillLock} from 'react-icons/ai'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 
 import { useAuth } from '../../hooks/auth'
 
@@ -10,8 +10,8 @@ import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 
 export function SignIn() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const { singIn } = useAuth()
 
@@ -27,21 +27,21 @@ export function SignIn() {
         <h2>Faça seu login</h2>
 
         <Input 
-          placeholder="E-mail"
+          placeholder='E-mail'
           icon={AiOutlineMail} 
-          type="text"
+          type='text'
           onChange={e => setEmail(e.target.value)} 
         />
         <Input 
-          placeholder="Senha"
+          placeholder='Senha'
           icon={AiFillLock} 
-          type="password"
+          type='password'
           onChange={e => setPassword(e.target.value)} 
         />
 
-        <Button title="Entrar" onClick={handleSingIn}/>
+        <Button title='Entrar' onClick={handleSingIn}/>
 
-        <Link to="/register">Criar conta</Link>
+        <Link to='/register'>Criar conta</Link>
 
       </Form>
       <Background/>

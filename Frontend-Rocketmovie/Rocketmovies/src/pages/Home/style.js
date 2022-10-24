@@ -9,8 +9,8 @@ export const Container = styled.div`
     display: grid;
     grid-template-rows: 11.6rem auto;
     grid-template-areas:
-      "header"
-      "content";
+      'header'
+      'content';
 `
 
 export const Content = styled.div`
@@ -22,7 +22,7 @@ export const Content = styled.div`
     flex-direction: column;
   }
 
-  div {
+  .myMovies {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -103,8 +103,8 @@ export const ItemList = styled.li`
     color: ${({ theme }) => theme.COLORS.WHITE};
   }
 
-  > svg {
-    color: ${({ theme }) => theme.COLORS.PINK};
+  > div {
+    margin: 2rem 0;
   }
 
   > p {

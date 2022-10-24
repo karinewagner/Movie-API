@@ -7,8 +7,8 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 11.6rem auto;
   grid-template-areas:
-    "header"
-    "content";
+    'header'
+    'content';
 
   > main {
     grid-area: content;
@@ -40,10 +40,6 @@ export const Content = styled.div`
       line-height: 4.7rem;
       font-weight: 500;
       margin-right: 1rem;
-    }
-
-    > svg {
-      color: ${({ theme }) => theme.COLORS.PINK};
     }
   }
   

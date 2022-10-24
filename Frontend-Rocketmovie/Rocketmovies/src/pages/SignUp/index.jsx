@@ -1,8 +1,8 @@
 import { Container, Form, Background } from './styles'
 
+import { useState } from 'react'
 import { AiOutlineUserAdd, AiOutlineMail, AiFillLock, AiOutlineArrowLeft} from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
 
 import { api } from '../../services/api'
 
@@ -11,27 +11,27 @@ import { Button } from '../../components/Button'
 import { ButtonText } from '../../components/ButtonText'
 
 export function SignUp() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
 
   function handleSignUp() {
     if(!name || !email || !password) {
-      return alert("Preencha todos os campos!")
+      return alert('Preencha todos os campos!')
     }
 
     api.post('/users', { name, email, password })
     .then(() => {
-      alert("Usuário cadastrado com sucesso!")
+      alert('Usuário cadastrado com sucesso!')
       navigate(-1)                                    //
     })
     .catch(error => {
       if(error.response) {
         alert(error.response.data.message)
       } else {
-        alert("Não foi possível cadastrar!")
+        alert('Não foi possível cadastrar!')
       }
 
     })
@@ -49,33 +49,33 @@ export function SignUp() {
         <h2>Crie sua conta</h2>
 
         <Input 
-          placeholder="Nome"
+          placeholder='Nome'
           icon={AiOutlineUserAdd} 
-          type="text"
+          type='text'
           onChange={e => setName(e.target.value)} 
         />
         <Input 
-          placeholder="E-mail"
+          placeholder='E-mail'
           icon={AiOutlineMail} 
-          type="text" 
+          type='text' 
           onChange={e => setEmail(e.target.value)}
         />
         <Input 
-          placeholder="Senha"
+          placeholder='Senha'
           icon={AiFillLock} 
-          type="password"
+          type='password'
           onChange={e => setPassword(e.target.value)}
         />
 
         <Button 
-          title="Cadastrar"
+          title='Cadastrar'
           onClick={handleSignUp}
         />
 
         <div className='btnBack'>
           <AiOutlineArrowLeft/>
           <ButtonText 
-            title="Voltar para o login" 
+            title='Voltar para o login'
             onClick={handleBack}>
           </ButtonText>
         </div>

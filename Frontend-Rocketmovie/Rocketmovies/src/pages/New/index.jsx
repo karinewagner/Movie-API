@@ -15,17 +15,17 @@ import { ButtonText } from '../../components/ButtonText'
 
 
 export function New() {
-  const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
-  const [rating, setRating] = useState("");
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [ratings, setRatings] = useState('')
   const [tags, setTags] = useState([])
-  const [newTag, setNewTag] = useState("")
+  const [newTag, setNewTag] = useState('')
 
   const navigate = useNavigate()
 
   function handleAddTag() {
     setTags(prevState => [...prevState, newTag])
-    setNewTag("")
+    setNewTag('')
   }
 
   function handleRemoveTag(deleted) {
@@ -37,7 +37,7 @@ export function New() {
   }
 
   async function handleRemove() {
-    const confirm = window.confirm("Deseja realmente remover o filme?")
+    const confirm = window.confirm('Deseja realmente remover o filme?')
 
     if(confirm) {
       //await api.delete(`/movies/${params.id}`)
@@ -47,27 +47,27 @@ export function New() {
 
   async function handleNewMovie() {
     if(!title) {
-      return alert("Digite o título do filme.")
+      return alert('Digite o título do filme.')
     }
 
-    const isRatingValid = rating >= 0 && rating <= 5 && rating !== "";
+    const isRatingValid = ratings >= 0 && ratings <= 5 && ratings !== '';
 
     if(!isRatingValid) {
-      return alert("Digite uma nota para o filme.")
+      return alert('Digite uma nota para o filme.')
     }
 
     if(newTag) {
-      return alert("Você digitou uma tag no campo de adicionar, mas não clicou em adicionar! Clique para adicionar ou deixe o campo vázio.")
+      return alert('Você digitou uma tag no campo de adicionar, mas não clicou em adicionar! Clique para adicionar ou deixe o campo vázio.')
     }
 
-    await api.post("/movies", {
+    await api.post('/movies', {
       title,
       description,
-      rating,
+      ratings,
       tags
     })
 
-    alert("Filme adicionado com sucesso!")
+    alert('Filme adicionado com sucesso!')
     navigate(-1)
   }
 
@@ -78,7 +78,7 @@ export function New() {
         <div className='btnBack'>
           <AiOutlineArrowLeft/>
           <ButtonText 
-            title="Voltar" 
+            title='Voltar'
             onClick={handleBack}>
           </ButtonText>
         </div>
@@ -88,21 +88,17 @@ export function New() {
 
           <div className='newMovieTitle'>
             <Input 
-              placeholder="Título"
+              placeholder='Título'
               onChange={e => setTitle(e.target.value)}
             /> 
             <Input 
-              placeholder="Sua nota (de 0 a 5)"
-              type="number"
-              min="0"
-              max="5"
-              value={rating}
-              onChange={e => setRating(e.target.value)}
+              placeholder='Sua nota (de 0 a 5)'
+              onChange={e => setRatings(e.target.value)}
             />
           </div>
 
           <Textarea 
-            placeholder="Observação"
+            placeholder='Observação'
             onChange={e => setDescription(e.target.value)}
           />
 
@@ -120,7 +116,7 @@ export function New() {
             }
             <NewTag 
               isNew 
-              placeholder="Novo marcador"
+              placeholder='Novo marcador'
               onChange={e => setNewTag(e.target.value)}
               value={newTag} 
               onClick={handleAddTag}
@@ -129,11 +125,11 @@ export function New() {
           </div>
           <div className='finishBtn'>
             <Button 
-              title="Excluir filme"
+              title='Excluir filme'
               onClick={handleRemove}
             />
             <Button 
-              title="Salvar"
+              title='Salvar'
               onClick={handleNewMovie}
             />
           </div>
