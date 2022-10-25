@@ -1,12 +1,14 @@
-# Movie-API
+# Frontend - Movie-API
 
-> Criação de uma aplicação com React e Node, onde o usuário pode cadastra filmes, preenchendo algumas informações, como nome, descrição, nota e cria tags relacionadas a ele.
+> Criação de uma aplicação com React e Node, onde o usuário pode cadastra filmes, preenchendo algumas informações(como nome, nota para o filme e descrição).
 </br>
 
-## Quer testar? Fique a vontade... [Clique aqui para acessar](https://rocketmovies-api.vercel.app/) ☺️👍 
+## Quer testar? Fique a vontade... [Clique aqui para acessar](https://rocketmovies22.netlify.app/) ☺️👍 
+
+Link para acesssar ao código do [Backend!](https://github.com/karinewagner/RocketMovies-Backend)
 </br>
 
-## Tecnologias (Frontend)
+### Tecnologias (Frontend)
 
 - React
 - Vite
@@ -14,18 +16,5 @@
 - CSS
 </br>
 
-![preview](./Frontend-Rocketmovie/Rocketmovies/.github/preview-frontend.png) 
-</br>
-</br>
-
-## Tecnologias (Backend)
-
-- Express
-- NodeJS
-- SQlite (SQL)
-- Knex.js
-</br>
-
-![preview](./Backend-Movie-API/.github/preview-diagrama.png) 
-</br>
+![preview](./.github/preview-frontend.png) 
 </br>
