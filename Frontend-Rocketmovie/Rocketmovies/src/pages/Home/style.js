@@ -91,7 +91,7 @@ export const ItemList = styled.li`
   background-color: ${({ theme }) => theme.COLORS.BG_PINK};
   border-radius: 1.6rem;
 
-  padding: 3.2rem;
+  padding: 3rem;
   margin-bottom: 2.4rem;
 
   > h2  {
@@ -104,10 +104,11 @@ export const ItemList = styled.li`
   }
 
   > div {
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
 
   > p {
+    max-height: 5rem;
     margin: 1.5rem 0 3rem;
     text-align: justify;
   }
