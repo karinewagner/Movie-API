@@ -1,13 +1,17 @@
 # Movie-API
 
 > Criação de uma aplicação com React e Node, onde o usuário pode cadastra filmes, preenchendo algumas informações, como nome, descrição, nota e cria tags relacionadas a ele.
+</br>
+
+## Quer testar? Fique a vontade... [Clique aqui para acessar](https://rocketmovies-api.vercel.app/) ☺️👍 
+</br>
 
 ## Tecnologias (Frontend)
 
 - React
 - Vite
 - HTML
-- Css
+- CSS
 </br>
 
 ![preview](./Frontend-Rocketmovie/Rocketmovies/.github/preview-frontend.png) 
